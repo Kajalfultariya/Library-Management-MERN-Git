@@ -12,7 +12,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const fetchBookData = async () => {
-        await axios.get("http://localhost:8000/api/fetchStudent").then((response) => {
+        await axios.get("http://localhost:2000/api/fetchStudent").then((response) => {
             //setNextId(response.data.length)
             setStudents(response.data)
         }).catch(error => { console.log("errr", error) })
