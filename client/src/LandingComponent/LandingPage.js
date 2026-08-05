@@ -5,7 +5,6 @@ import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import FeaturesSection from './FeaturesSection';
 import BenefitsSection from './BenefitsSection';
-import PricingSection from './PricingSection';
 import CtaFooterSection from './CtaFooterSection';
 
 const LandingPage = () => {
@@ -35,8 +34,7 @@ const LandingPage = () => {
       <FeaturesSection />
       {/* Benefits Section */}
       <BenefitsSection />
-      {/* Pricing Section 
-      <PricingSection />
+    
       {/* CTA Section */}
       <CtaFooterSection
         setCurrentPage={setCurrentPage} />
