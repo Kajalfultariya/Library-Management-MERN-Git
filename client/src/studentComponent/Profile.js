@@ -195,7 +195,7 @@ const Profile = ({ studentInfo, borrowedBooks, books }) => {
                                                 }
 
                                                 //update student password
-                                                await axios.put(`http://localhost:8000/api/updateStudent/${studentInfo._id}`,
+                                                await axios.put(`http://localhost:8800/api/updateStudent/${studentInfo._id}`,
                                                     formData)
                                                     .then((response) => {
                                                         toast.success("successfully updated Profile");
@@ -278,7 +278,7 @@ const Profile = ({ studentInfo, borrowedBooks, books }) => {
                                                         const formData = { ...studentInfo, password: newPwd }
 
                                                         //update student password
-                                                        await axios.put(`http://localhost:8000/api/updateStudent/${studentInfo._id}`,
+                                                        await axios.put(`http://localhost:8800/api/updateStudent/${studentInfo._id}`,
                                                             formData)
                                                             .then((response) => {
                                                                 setErr("")
@@ -327,7 +327,7 @@ const Profile = ({ studentInfo, borrowedBooks, books }) => {
                                                         const formData = { ...books, available: newArr }
 
                                                         //update book list
-                                                        await axios.put(`http://localhost:8000/api/update/${book._id}`, formData)
+                                                        await axios.put(`http://localhost:8800/api/update/${book._id}`, formData)
                                                             .then((response) => {
                                                                 console.log("update book", response.data)
                                                             })
@@ -340,14 +340,14 @@ const Profile = ({ studentInfo, borrowedBooks, books }) => {
                                                 //delete borrowed book list of students
                                                 borrowedBooks.map(async (item) => {
                                                     if (item.studentId === localStorage.getItem("studentId")) {
-                                                        await axios.delete(`http://localhost:8000/api/deleteBook/${item._id}`)
+                                                        await axios.delete(`http://localhost:8800/api/deleteBook/${item._id}`)
                                                             .then((res) => { })
                                                             .catch(err => console.log(err))
                                                     }
                                                 })
 
                                                 //delete student detail
-                                                await axios.delete(`http://localhost:8000/api/deleteStudent/${studentInfo._id}`)
+                                                await axios.delete(`http://localhost:8800/api/deleteStudent/${studentInfo._id}`)
                                                     .then((res) => {
                                                         navigate("/")
                                                     })
