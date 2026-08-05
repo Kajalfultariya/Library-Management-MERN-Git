@@ -35,7 +35,7 @@ const LandingPage = () => {
       <FeaturesSection />
       {/* Benefits Section */}
       <BenefitsSection />
-      {/* Pricing Section */}
+      {/* Pricing Section 
       <PricingSection />
       {/* CTA Section */}
       <CtaFooterSection
