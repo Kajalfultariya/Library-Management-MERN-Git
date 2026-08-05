@@ -22,7 +22,7 @@ const Sidebar = ({ currentPage, setCurrentPage, borrowedBooks,
   return (
     <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
-        <h2>📚  {sidebarOpen ? "LibHub" : ''}</h2>
+        <h2>📚 Hi {sidebarOpen ? "LibHub" : ''}</h2>
         <button className="toggle-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
           {sidebarOpen ? '✕' : '☰'}
         </button>
