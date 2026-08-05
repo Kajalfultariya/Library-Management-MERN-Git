@@ -3,19 +3,7 @@ import { create, deleteUser, fetch, fetchOne, update } from '../controller/userC
 import { createStudent, deleteUserStudent, fetchStudent, fetchStudentOne, updateStudent } from '../controller/studentController.js';
 import { createBook, deleteUserBook, fetchBook, fetchBookOne, updateBook } from '../controller/BooksController.js';
 
-import multer from "multer"
-import { v4 as uuidv4 } from 'uuid';
-import path from 'path';
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => cb(null, 'uploads/'),
-    filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
-});
-const upload = multer({ storage });
-
-
 const route = express.Router()
-
-//route.post("/create", upload.single('image'), create)
 
 //book routes
 route.post("/create", create)
