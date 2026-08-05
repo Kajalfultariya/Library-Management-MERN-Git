@@ -25,7 +25,7 @@ const StudentLibraryManagement = () => {
   
   //get library Book data
   const fetchBookData = async () => {
-    await axios.get("http://localhost:8800/api/fetch").then((response) => {
+    await axios.get("http://libraryserver-mu.vercel.app/api/fetch").then((response) => {
       //setNextId(response.data.length)
       setBooks(response.data)
     }).catch(error => { console.log("errr", error) })
@@ -33,7 +33,7 @@ const StudentLibraryManagement = () => {
 
   //getlibrary student data
   const fetchStudentData = async () => {
-    await axios.get("http://localhost:8800/api/fetchStudentOne/" + localStorage.getItem("studentId"))
+    await axios.get("http://libraryserver-mu.vercel.app/api/fetchStudentOne/" + localStorage.getItem("studentId"))
       .then((response) => {
         setStudentInfo(response.data)
         setListBorrowStuId(response.data.activeBorrows)
@@ -42,14 +42,14 @@ const StudentLibraryManagement = () => {
 
   //get library Borrow Book data
   const fetchBorrowBookData = async () => {
-    await axios.get("http://localhost:8800/api/fetchBook").then((response) => {
+    await axios.get("http://libraryserver-mu.vercel.app/api/fetchBook").then((response) => {
       if (response.data)
         setBorrowedBooks(response.data)
     }).catch(error => { console.log("errr", error) })
   }
   //get library Student  data
   const fetchStudentListData = async () => {
-    await axios.get("http://localhost:8800/api/fetchStudent").then((response) => {
+    await axios.get("http://libraryserver-mu.vercel.app/api/fetchStudent").then((response) => {
       if (response.data)
         setStudentListData(response.data)
       console.log("student detail", response.data)
@@ -95,19 +95,19 @@ const StudentLibraryManagement = () => {
 
           const formData = { ...books, available: arrData }
           //update book list
-          await axios.put(`http://localhost:8800/api/update/${bookId}`, formData)
+          await axios.put(`http://libraryserver-mu.vercel.app/api/update/${bookId}`, formData)
             .then((response) => { }).catch(error => { console.log("errr", error) })
 
 
           //add boorow book data
-          await axios.post("http://localhost:8800/api/createBook", newBorrow)
+          await axios.post("http://libraryserver-mu.vercel.app/api/createBook", newBorrow)
             .then((response) => {
             }).catch(error => { console.log("errr", error) })
 
           //update student list
 
           const formDataId = { ...studentInfo, activeBorrows: arrIdData }
-          await axios.put(`http://localhost:8800/api/updateStudent/${studentInfo._id}`, formDataId)
+          await axios.put(`http://libraryserver-mu.vercel.app/api/updateStudent/${studentInfo._id}`, formDataId)
             .then((response) => {
               window.location.reload()
             }).catch(error => { console.log("errr", error) })
@@ -129,7 +129,7 @@ const StudentLibraryManagement = () => {
         const newArr = book.available.filter(item => item !== JSON.parse(localStorage.getItem("studentPersonalId")))
         const formData = { ...books, available: newArr }
         //update book list
-        await axios.put(`http://localhost:8800/api/update/${book._id}`, formData)
+        await axios.put(`http://libraryserver-mu.vercel.app/api/update/${book._id}`, formData)
           .then((response) => {
             console.log("update book", response.data)
             // window.location.reload()
@@ -140,7 +140,7 @@ const StudentLibraryManagement = () => {
         borrowedBooks.map(async (item) => (
           //  console.log("id and stuid", item.bookId, item.studentId),
           item.bookId === id && item.studentId === localStorage.getItem("studentId") ?
-            await axios.delete(`http://localhost:8800/api/deleteBook/${item._id}`)
+            await axios.delete(`http://libraryserver-mu.vercel.app/api/deleteBook/${item._id}`)
               .then((res) => {
                 setBorrowedBooks(borrowedBooks.filter(b => b.bookId !== bookId));
                 //window.location.reload()
@@ -151,7 +151,7 @@ const StudentLibraryManagement = () => {
         arrIdData = listBorrowStuId.filter(item => item !== id)
         //update student list
         const formDataId = { ...studentInfo, activeBorrows: arrIdData }
-        await axios.put(`http://localhost:8800/api/updateStudent/${studentInfo._id}`, formDataId)
+        await axios.put(`http://libraryserver-mu.vercel.app/api/updateStudent/${studentInfo._id}`, formDataId)
           .then((response) => {
             console.log("update res", response.data)
             window.location.reload()

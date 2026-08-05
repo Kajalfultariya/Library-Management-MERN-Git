@@ -15,7 +15,7 @@ const CreateStudent = () => {
     const [nextId, setNextId] = useState(1)
 
     const fetchStudentData = async () => {
-        await axios.get("http://localhost:8800/api/fetchStudent")
+        await axios.get("http://libraryserver-mu.vercel.app/api/fetchStudent")
             .then((response) => {
                 console.log("response", response)
                 setNextId(response.data.length+1)
@@ -39,7 +39,7 @@ const CreateStudent = () => {
             "phone": "+91 " + phone,
             "totalBorrowed": 0
         }
-        await axios.post("http://localhost:8800/api/createStudent", newData)
+        await axios.post("http://libraryserver-mu.vercel.app/api/createStudent", newData)
             .then((response) => {
                 navigate('/login')
             }).catch(error => { console.log("errr", error) })
